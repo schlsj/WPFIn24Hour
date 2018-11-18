@@ -1,0 +1,49 @@
+﻿<Window x:Class="SimpleContactForm.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="A Navigable Contact Form" Height="300" Width="300" FocusManager.FocusedElement="{Binding ElementName=FirstName}">
+    <Grid ShowGridLines="True">
+       <Grid.RowDefinitions>
+           <RowDefinition Height="Auto"></RowDefinition>
+           <RowDefinition Height="Auto"></RowDefinition>
+           <RowDefinition Height="Auto"></RowDefinition>
+           <RowDefinition Height="Auto"></RowDefinition>
+           <RowDefinition Height="*"></RowDefinition>
+           <RowDefinition Height="Auto"></RowDefinition>
+       </Grid.RowDefinitions> 
+       <Grid.ColumnDefinitions>
+           <ColumnDefinition Width="Auto"></ColumnDefinition>
+           <ColumnDefinition Width="*"></ColumnDefinition>
+       </Grid.ColumnDefinitions>
+       <Label Target="{Binding ElementName=FirstName}">
+           <Border BorderBrush="Blue" BorderThickness="2 0" CornerRadius="3" Padding="2">
+                <AccessText>_First Name</AccessText>
+           </Border>
+       </Label>
+       <TextBox x:Name="FirstName" Grid.Row="0" Grid.Column="1"></TextBox>
+
+       <Label Content="_Last Name:" Grid.Row="1" Grid.Column="0" Target="{Binding ElementName=LastName}"></Label>
+       <TextBox x:Name="LastName" Grid.Row="1" Grid.Column="1"></TextBox>
+       
+       <Label Content="Se_x:" Grid.Row="2" Grid.Column="0" Target="{Binding ElementName=Male}"></Label>
+       <WrapPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+           <RadioButton x:Name="Male" GroupName="Sex" Content="Male" Margin="3"></RadioButton>
+           <RadioButton GroupName="Sex" Content="Male" Margin="3"></RadioButton>
+       </WrapPanel>
+       <Label Grid.Row="3" Grid.Column="0" Content="_Education" Target="{Binding ElementName=HighSchool}"></Label>
+       <WrapPanel Grid.Row="3" Grid.Column="1">
+           <CheckBox x:Name="HighSchool" Content="High School" Margin="2"></CheckBox>
+           <CheckBox Content="Bachelor's" Margin="2"></CheckBox>
+           <CheckBox Content="Master's" Margin="2"></CheckBox>
+           <CheckBox Content="Doctorate" Margin="2"></CheckBox>
+       </WrapPanel>
+       <Label Content="Additional _Notes:" Grid.Row="4" Grid.Column="0" Target="{Binding ElementName=AdditionalNotes}"></Label>
+       <TextBox x:Name="AdditionalNotes" Grid.Row="4" Grid.Column="1"  
+                AcceptsReturn="True" AcceptsTab="True" TextWrapping="Wrap"
+                VerticalAlignment="Stretch" ToolTip="Type additional notes here." Language="en-us" SpellCheck.IsEnabled="True"></TextBox>
+        <Button Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Content="_Save" Click="ButtonBase_OnClick"></Button>
+    </Grid>
+</Window>

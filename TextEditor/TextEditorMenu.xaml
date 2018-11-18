@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="TextEditor.TextEditorMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+>
+    <Menu>
+        <MenuItem Header="_File">
+            <MenuItem Header="_New"></MenuItem>
+            <MenuItem Header="_Open"></MenuItem>
+            <MenuItem Header="_Save"></MenuItem>
+            <MenuItem Header="Save As"></MenuItem>
+            <Separator></Separator>
+            <MenuItem Header="_Print"></MenuItem>
+            <Separator></Separator>
+            <MenuItem Header="Close"></MenuItem>
+        </MenuItem>
+        <MenuItem Header="_Editor">
+            <MenuItem Header="_Undo"></MenuItem>
+            <MenuItem Header="_Redo"></MenuItem>
+            <Separator></Separator>
+            <MenuItem Header="Cu_t"></MenuItem>
+            <MenuItem Header="_Copy"></MenuItem>
+            <MenuItem Header="_Paste"></MenuItem>
+            <MenuItem Header="_Delete"></MenuItem>
+        </MenuItem>
+        <MenuItem Header="_Help">
+            <MenuItem Header="_About" Click="About_Clicked"></MenuItem>
+        </MenuItem>
+    </Menu>
+</UserControl>
