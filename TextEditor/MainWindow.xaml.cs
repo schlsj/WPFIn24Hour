@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace TextEditor
 {
@@ -45,6 +46,46 @@ namespace TextEditor
         private void Body_OnSelectionChanged(object sender, RoutedEventArgs e)
         {
             Toolbar.SynchronizeWith(Body.Selection);
+        }
+
+        private void NewDocument(object sender, ExecutedRoutedEventArgs e)
+        {
+            documentManager.NewDocument();
+            Status.Text = "New Document";
+        }
+
+        private void OpenDocument(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (documentManager.OpenDocument())
+            {
+                Status.Text = "Document loaded.";
+            }
+        }
+
+        private void SaveDocument(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (documentManager.SaveDocument())
+            {
+                Status.Text = "Document saved.";
+            }
+        }
+
+        private void SaveDocumentAs(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (documentManager.SaveDocumentAs())
+            {
+                Status.Text = "Document saved.";
+            }
+        }
+
+        private void ApplicationClose(object sender, ExecutedRoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void SaveDocument_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = documentManager.CanSaveDocument();
         }
     }
 }

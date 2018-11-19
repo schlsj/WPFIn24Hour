@@ -7,23 +7,23 @@
 >
     <Menu>
         <MenuItem Header="_File">
-            <MenuItem Header="_New"></MenuItem>
-            <MenuItem Header="_Open"></MenuItem>
-            <MenuItem Header="_Save"></MenuItem>
-            <MenuItem Header="Save As"></MenuItem>
+            <MenuItem Header="_New" Command="ApplicationCommands.New"></MenuItem>
+            <MenuItem Header="_Open" Command="ApplicationCommands.Open"></MenuItem>
+            <MenuItem Header="_Save" Command="ApplicationCommands.Save"></MenuItem>
+            <MenuItem Header="Save As" Command="ApplicationCommands.SaveAs"></MenuItem>
             <Separator></Separator>
             <MenuItem Header="_Print"></MenuItem>
             <Separator></Separator>
-            <MenuItem Header="Close"></MenuItem>
+            <MenuItem Header="Close" Command="ApplicationCommands.Close"></MenuItem>
         </MenuItem>
         <MenuItem Header="_Editor">
-            <MenuItem Header="_Undo"></MenuItem>
-            <MenuItem Header="_Redo"></MenuItem>
+            <MenuItem Command="ApplicationCommands.Undo"></MenuItem>
+            <MenuItem Command="ApplicationCommands.Redo"></MenuItem>
             <Separator></Separator>
-            <MenuItem Header="Cu_t"></MenuItem>
-            <MenuItem Header="_Copy"></MenuItem>
-            <MenuItem Header="_Paste"></MenuItem>
-            <MenuItem Header="_Delete"></MenuItem>
+            <MenuItem Command="ApplicationCommands.Cut"></MenuItem>
+            <MenuItem Command="ApplicationCommands.Copy"></MenuItem>
+            <MenuItem Command="ApplicationCommands.Paste"></MenuItem>
+            <MenuItem Command="ApplicationCommands.Delete"></MenuItem>
         </MenuItem>
         <MenuItem Header="_Help">
             <MenuItem Header="_About" Click="About_Clicked"></MenuItem>

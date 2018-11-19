@@ -6,6 +6,17 @@
         mc:Ignorable="d"
         xmlns:local="clr-namespace:TextEditor"
         Title="MainWindow" Height="600" Width="800">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.New" Executed="NewDocument"></CommandBinding>
+        <CommandBinding Command="ApplicationCommands.Open" Executed="OpenDocument"></CommandBinding>
+        <CommandBinding Command="ApplicationCommands.Save" Executed="SaveDocument" CanExecute="SaveDocument_CanExecute"></CommandBinding>
+        <CommandBinding Command="ApplicationCommands.SaveAs" Executed="SaveDocumentAs"></CommandBinding>
+        <CommandBinding Command="ApplicationCommands.Close" Executed="ApplicationClose"></CommandBinding>
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <MouseBinding Gesture="Control+WheelClick" Command="ApplicationCommands.SaveAs"></MouseBinding>
+        <KeyBinding Key="F12" Command="SaveAs"></KeyBinding>
+    </Window.InputBindings>
     <DockPanel>
         <local:TextEditorMenu x:Name="Menu" DockPanel.Dock="Top"></local:TextEditorMenu>
         <local:TextEditorToolbar x:Name="Toolbar" DockPanel.Dock="Top" ComboBox.SelectionChanged="Toolbar_OnSelectionChanged"></local:TextEditorToolbar>

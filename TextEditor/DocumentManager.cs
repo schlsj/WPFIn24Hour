@@ -64,5 +64,16 @@ namespace TextEditor
                 textBox.Selection.ApplyPropertyValue(property, value);
             }
         }
+
+        public void NewDocument()
+        {
+            currentFile = null;
+            textBox.Document = new FlowDocument();
+        }
+
+        public bool CanSaveDocument()
+        {
+            return !string.IsNullOrEmpty(currentFile);
+        }
     }
 }

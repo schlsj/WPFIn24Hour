@@ -7,32 +7,32 @@
              Loaded="UserControl_Loaded">
     <ToolBarTray>
         <ToolBar>
-            <Button ToolTip="Open">
+            <Button ToolTip="Open" Command="ApplicationCommands.Open">
                 <Image Source="Icons/folder_page.png"></Image>
             </Button>
-            <Button ToolTip="Save">
+            <Button ToolTip="Save" Command="ApplicationCommands.Save">
                 <Image Source="Icons/page_save.png"></Image>
             </Button>
         </ToolBar>
         <ToolBar>
-            <Button ToolTip="Cut">
+            <Button ToolTip="Cut" Command="ApplicationCommands.Cut">
                 <Image Source="Icons/cut.png"></Image>
             </Button>
-            <Button ToolTip="Copy">
+            <Button ToolTip="Copy" Command="ApplicationCommands.Copy">
                 <Image Source="Icons/page_copy.png"></Image>
             </Button>
-            <Button ToolTip="Paste">
+            <Button ToolTip="Paste" Command="ApplicationCommands.Paste">
                 <Image Source="Icons/page_paste.png"></Image>
             </Button>
         </ToolBar>
         <ToolBar>
-            <ToggleButton x:Name="BoldButton" ToolTip="Bold">
+            <ToggleButton x:Name="BoldButton" ToolTip="Bold" Command="EditingCommands.ToggleBold">
                 <Image Source="Icons/text_bold.png"></Image>
             </ToggleButton>
-            <ToggleButton x:Name="ItalicButton" ToolTip="Italic">
+            <ToggleButton x:Name="ItalicButton" ToolTip="Italic" Command="EditingCommands.ToggleItalic">
                 <Image Source="Icons/text_italic.png"></Image>
             </ToggleButton>
-            <ToggleButton x:Name="UnderlineButton" ToolTip="Underline">
+            <ToggleButton x:Name="UnderlineButton" ToolTip="Underline" Command="EditingCommands.ToggleUnderline">
                 <Image Source="Icons/text_underline.png"></Image>
             </ToggleButton>
             <Separator></Separator>
