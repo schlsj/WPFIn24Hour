@@ -56,5 +56,13 @@ namespace TextEditor
             }
             return false;
         }
+
+        public void ApplyToSelection(DependencyProperty property, object value)
+        {
+            if (value != null)
+            {
+                textBox.Selection.ApplyPropertyValue(property, value);
+            }
+        }
     }
 }
