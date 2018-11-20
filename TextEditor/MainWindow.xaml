@@ -12,6 +12,8 @@
         <CommandBinding Command="ApplicationCommands.Save" Executed="SaveDocument" CanExecute="SaveDocument_CanExecute"></CommandBinding>
         <CommandBinding Command="ApplicationCommands.SaveAs" Executed="SaveDocumentAs"></CommandBinding>
         <CommandBinding Command="ApplicationCommands.Close" Executed="ApplicationClose"></CommandBinding>
+        <CommandBinding Command="Print" Executed="PrintDocument"></CommandBinding>
+        <CommandBinding Command="PrintPreview" Executed="PrintPreview"></CommandBinding>
     </Window.CommandBindings>
     <Window.InputBindings>
         <MouseBinding Gesture="Control+WheelClick" Command="ApplicationCommands.SaveAs"></MouseBinding>

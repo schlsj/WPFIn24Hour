@@ -7,14 +7,15 @@
 >
     <Menu>
         <MenuItem Header="_File">
-            <MenuItem Header="_New" Command="ApplicationCommands.New"></MenuItem>
-            <MenuItem Header="_Open" Command="ApplicationCommands.Open"></MenuItem>
-            <MenuItem Header="_Save" Command="ApplicationCommands.Save"></MenuItem>
-            <MenuItem Header="Save As" Command="ApplicationCommands.SaveAs"></MenuItem>
+            <MenuItem Command="ApplicationCommands.New"></MenuItem>
+            <MenuItem Command="ApplicationCommands.Open"></MenuItem>
+            <MenuItem Command="ApplicationCommands.Save"></MenuItem>
+            <MenuItem Command="ApplicationCommands.SaveAs"></MenuItem>
             <Separator></Separator>
-            <MenuItem Header="_Print"></MenuItem>
+            <MenuItem Command="Print"></MenuItem>
+            <MenuItem Command="PrintPreview"></MenuItem>
             <Separator></Separator>
-            <MenuItem Header="Close" Command="ApplicationCommands.Close"></MenuItem>
+            <MenuItem Command="ApplicationCommands.Close"></MenuItem>
         </MenuItem>
         <MenuItem Header="_Editor">
             <MenuItem Command="ApplicationCommands.Undo"></MenuItem>
@@ -27,6 +28,7 @@
         </MenuItem>
         <MenuItem Header="_Help">
             <MenuItem Header="_About" Click="About_Clicked"></MenuItem>
+            <MenuItem Header="Throw Exception" Click="Exception"></MenuItem>
         </MenuItem>
     </Menu>
 </UserControl>

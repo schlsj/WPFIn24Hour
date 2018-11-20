@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace TextEditor
 {
@@ -15,6 +16,11 @@ namespace TextEditor
         private void About_Clicked(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Teach Yourself WPF in 24 Hours - Text Editor", "About");
+        }
+
+        private void Exception(object sender, RoutedEventArgs e)
+        {
+            throw new Exception();
         }
     }
 }

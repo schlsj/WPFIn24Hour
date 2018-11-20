@@ -10,10 +10,12 @@ namespace TextEditor
     public partial class MainWindow 
     {
         private DocumentManager documentManager;
+        private PrintManager printManager;
         public MainWindow()
         {
             InitializeComponent();
             documentManager = new DocumentManager(Body);
+            printManager = new PrintManager(Body);
             if (documentManager.OpenDocument())
             {
                 Status.Text = "Document loaded";
@@ -86,6 +88,19 @@ namespace TextEditor
         private void SaveDocument_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = documentManager.CanSaveDocument();
+        }
+
+        private void PrintDocument(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (printManager.Print())
+            {
+                Status.Text = "Document sent to printer.";
+            }
+        }
+
+        private void PrintPreview(object sender, ExecutedRoutedEventArgs e)
+        {
+            printManager.PrintPreview();
         }
     }
 }
