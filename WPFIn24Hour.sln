@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericEventHandler", "Gene
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreviewEvents", "PreviewEvents\PreviewEvents.csproj", "{CF36470A-5818-4191-B29F-278BEB2E73AC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager", "ContactManager\ContactManager.csproj", "{FCEEBD3C-9CF2-403A-B137-D162505B9B29}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{CF36470A-5818-4191-B29F-278BEB2E73AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF36470A-5818-4191-B29F-278BEB2E73AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF36470A-5818-4191-B29F-278BEB2E73AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCEEBD3C-9CF2-403A-B137-D162505B9B29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCEEBD3C-9CF2-403A-B137-D162505B9B29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCEEBD3C-9CF2-403A-B137-D162505B9B29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCEEBD3C-9CF2-403A-B137-D162505B9B29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
