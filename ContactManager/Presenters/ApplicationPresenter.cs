@@ -78,7 +78,7 @@ namespace ContactManager.Presenters
             OpenContact(new Contact());
         }
 
-        private void OpenContact(Contact contact)
+        public void OpenContact(Contact contact)
         {
             if (contact == null)
             {
@@ -89,7 +89,7 @@ namespace ContactManager.Presenters
 
         public void DisplayAllContacts()
         {
-            throw new NotImplementedException();
+            View.AddTab(new ContactListPresenter(this,new ContactListView()));
         }
     }
 }

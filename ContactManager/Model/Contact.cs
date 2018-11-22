@@ -65,6 +65,7 @@ namespace ContactManager.Model
             {
                 _firstName = value;
                 OnPropertyChanged();
+                OnPropertyChanged("LookupName");
             }
         }
 
@@ -75,6 +76,7 @@ namespace ContactManager.Model
             {
                 _lastName = value;
                 OnPropertyChanged();
+                OnPropertyChanged("LookupName");
             }
         }
 
@@ -138,10 +140,7 @@ namespace ContactManager.Model
             }
         }
 
-        public string LookupName
-        {
-            get { return $"{_lastName}, {_firstName}"; }
-        }
+        public string LookupName => $"{_lastName}, {_firstName}";
 
         public override string ToString()
         {

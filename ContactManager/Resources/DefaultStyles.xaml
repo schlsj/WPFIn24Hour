@@ -1,0 +1,59 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="BaseControlStyle" TargetType="{x:Type Control}">
+        <Setter Property="FontFamily" Value="Arial"></Setter> 
+        <Setter Property="FontSize" Value="12"></Setter> 
+    </Style>
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseControlStyle}">
+        <Setter Property="Margin" Value="4"></Setter>
+    </Style>    
+    <Style TargetType="{x:Type GroupBox}">
+        <Setter Property="Margin" Value="5"></Setter>
+        <Setter Property="Padding" Value="5"></Setter>
+        <Setter Property="BorderThickness" Value="2"></Setter>
+    </Style>
+    <Style TargetType="{x:Type Label}" BasedOn="{StaticResource BaseControlStyle}">
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+    </Style>
+    <Style TargetType="{x:Type TextBox}">
+        <Setter Property="FontWeight" Value="Normal"></Setter>
+        <Setter Property="FontSize" Value="12"></Setter>
+        <Setter Property="Margin" Value="2"></Setter>
+    </Style>
+    <Style TargetType="{x:Type ComboBox}">
+        <Setter Property="FontWeight" Value="Normal"></Setter>
+        <Setter Property="FontSize" Value="12"></Setter>
+        <Setter Property="Margin" Value="2"></Setter>
+    </Style>
+    <Style x:Key="OpenButton" TargetType="{x:Type Button}">
+        <Setter Property="Content" Value="+"></Setter>
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="BorderBrush" Value="Transparent"></Setter>
+        <Setter Property="VerticalAlignment" Value="Top"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+        <Setter Property="Margin" Value="0 5 10 0"></Setter>
+        <Setter Property="Padding" Value="0"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+    </Style>
+    <Style x:Key="Header" TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="{StaticResource DarkBlueBrush}"></Setter>
+        <Setter Property="CornerRadius" Value="6"></Setter>
+        <Setter Property="Padding" Value="10 5 10 5"></Setter>
+        <Setter Property="TextBlock.Foreground" Value="White"></Setter>
+        <Setter Property="TextBlock.FontSize" Value="20"></Setter>
+        <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+    </Style>
+    <Style x:Key="ButtonPanel" TargetType="{x:Type StackPanel}">
+        <Setter Property="Orientation" Value="Horizontal"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+        <Setter Property="VerticalAlignment" Value="Bottom"></Setter>
+    </Style>
+    <Style x:Key="GroupBoxHeader" TargetType="{x:Type Border}">
+        <Setter Property="CornerRadius" Value="4"></Setter>
+        <Setter Property="Padding" Value="5 1 5 1"></Setter>
+        <Setter Property="TextBlock.Foreground" Value="White"></Setter>
+        <Setter Property="TextBlock.FontSize" Value="14"></Setter>
+        <Setter Property="TextBlock.FontWeight" Value="Bold"></Setter>
+    </Style>
+</ResourceDictionary>
