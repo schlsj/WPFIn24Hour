@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
+using ContactManager.Model;
 using ContactManager.Presenters;
 
 namespace ContactManager.UserControls
@@ -24,6 +26,15 @@ namespace ContactManager.UserControls
         private void ViewAll_Clicked(object sender, RoutedEventArgs e)
         {
             Presenter.DisplayAllContacts();
+        }
+
+        private void OpenContact_Clicked(object sender, RoutedEventArgs e)
+        {
+            Button button=e.OriginalSource as Button;
+            if (button != null)
+            {
+                Presenter.OpenContact(button.DataContext as Contact);
+            }
         }
     }
 }

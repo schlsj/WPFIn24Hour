@@ -3,14 +3,50 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
              mc:Ignorable="d">
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="ContactSource" Source="{Binding CurrentContacts}">
+            <CollectionViewSource.SortDescriptions>
+                <cm:SortDescription PropertyName="LookupName"></cm:SortDescription> 
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+    </UserControl.Resources>
     <DockPanel>
         <StackPanel DockPanel.Dock="Bottom" Margin="4">
             <Button Content="New Contact" Click="New_Clicked"></Button>
             <Button Content="View All" Click="ViewAll_Clicked"></Button>
         </StackPanel>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <ItemsControl Width="250" VerticalAlignment="Stretch" BorderThickness="0" ItemsSource="{Binding CurrentContacts}"></ItemsControl>
+            <ItemsControl Width="250" VerticalAlignment="Stretch" BorderThickness="0" ItemsSource="{Binding Source={StaticResource ContactSource}}" ButtonBase.Click="OpenContact_Clicked">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="2">
+                            <Border Margin="2 2 0 0" CornerRadius="4" Background="Gray" Opacity="0.5"></Border>
+                            <Border BorderBrush="{StaticResource RedBrush}" BorderThickness="2" CornerRadius="4" Background="White" Margin="0 0 2 2"
+                                    Padding="3">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Grid.ColumnSpan="2" FontWeight="Bold" Text="{Binding LookupName}"></TextBlock>
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="   Office:"></TextBlock>
+                                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=OfficePhone,Converter={StaticResource PhoneConverter}}"></TextBlock>
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="    Email:"></TextBlock>
+                                    <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding PrimaryEmail}"></TextBlock>
+                                </Grid>
+                            </Border>
+                            <Button Style="{StaticResource OpenButton}"></Button>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </ScrollViewer>
     </DockPanel>
 </UserControl>
