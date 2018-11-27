@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="MediaViewer.UserControls.MediaPlayer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DockPanel>
+        <Grid DockPanel.Dock="Bottom" HorizontalAlignment="Center" Width="400" Height="50" Background="{StaticResource YellowBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Click="Stop_Clicked">
+                    <Rectangle Width="18" Height="20" Fill="{StaticResource RedBrush}" RadiusX="1" RadiusY="1"
+                               Stroke="{StaticResource OrangeBrush}" StrokeThickness="1"></Rectangle>
+                </Button>
+                <Button Grid.Column="1" Click="Play_Clicked">
+                    <Grid>
+                        <Polygon Fill="{StaticResource YellowBrush}" Stroke="Gray" Points="0 0, 18 10, 0 18"></Polygon>
+                        <Canvas Visibility="Hidden">
+                            <Rectangle Height="18" Width="6" Fill="{StaticResource YellowBrush}" Stroke="{StaticResource OrangeBrush}"></Rectangle>
+                            <Rectangle Height="18" Width="6" Fill="{StaticResource YellowBrush}" Stroke="{StaticResource OrangeBrush}"
+                                       Canvas.Left="8"></Rectangle>
+                        </Canvas>
+                    </Grid>
+                </Button>
+                <ToggleButton Grid.Column="2" IsChecked="{Binding ElementName=MediaElement, Path=IsMuted}">
+                    <Canvas Width="20" Height="20">
+                        <Path Fill="{StaticResource YellowBrush}" Stroke="{StaticResource RedBrush}" StrokeLineJoin="Round">
+                            <Path.Data>
+                                <PathGeometry>
+                                    <PathFigure StartPoint="12,5" IsClosed="True">
+                                        <LineSegment Point="0,6"></LineSegment>
+                                        <PolyLineSegment Points="0 14, 12 15, 17 20"></PolyLineSegment>
+                                        <ArcSegment Point="17,0" Size="30,30"></ArcSegment>
+                                    </PathFigure>
+                                </PathGeometry>
+                            </Path.Data>
+                        </Path>
+                        <Path Fill="White">
+                            <Path.Data>
+                                <PathGeometry>
+                                    <PathFigure StartPoint="13,6" IsClosed="True">
+                                        <PolyLineSegment Points="1 7, 1 11, 17.5 11"></PolyLineSegment>
+                                        <ArcSegment Point="16.5,2" Size="30,30"></ArcSegment>
+                                    </PathFigure>
+                                </PathGeometry>
+                            </Path.Data>
+                        </Path>
+                        <Polygon Points="20 5, 25 0, 27 3" Fill="{StaticResource RedBrush}"></Polygon>
+                        <Polygon Points="20 10, 28 9, 27 6" Fill="{StaticResource RedBrush}"></Polygon>
+                        <Polygon Points="20 13, 26 17, 27 13" Fill="{StaticResource RedBrush}"></Polygon>
+                        <Polygon Points="20 17, 24 21, 26 18" Fill="{StaticResource RedBrush}"></Polygon>
+                    </Canvas>
+                </ToggleButton>
+            </Grid>
+            <Slider Grid.Column="2" Minimum="0" Maximum="1" Value="{Binding ElementName=MediaElement,Path=Volume}"></Slider>
+        </Grid>
+        <Slider x:Name="ProgressSlide" DockPanel.Dock="Bottom" Minimum="0" LargeChange="1000" PreviewMouseLeftButtonDown="ProgressSlider_MouseDown"
+                PreviewMouseLeftButtonUp="ProgressSlider_MouseUp"></Slider>
+        <MediaElement x:Name="MediaElement" DockPanel.Dock="Top" LoadedBehavior="Manual" MediaOpened="MediaElement_OnMediaOpened"
+                      MediaEnded="MediaElement_MediaEnded"></MediaElement>
+    </DockPanel>
+</UserControl>

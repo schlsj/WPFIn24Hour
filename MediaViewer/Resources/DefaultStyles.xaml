@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="ColorsAndBrushes.xaml"></ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+    <Style x:Key="Title" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+        <Setter Property="Foreground" Value="{StaticResource TextBrush}"></Setter>
+    </Style>
+</ResourceDictionary>

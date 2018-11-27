@@ -1,0 +1,19 @@
+﻿<Window x:Class="MediaViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Media Viewer" Height="600" Width="800" Loaded="MainWindow_Loaded">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0 0 0 8">
+            <Button Background="{StaticResource RedBrush}" Click="Header_Clicked">
+                <Polygon Fill="{StaticResource YellowBrush}" Points="0 10, 11 0, 22 10, 18 10, 18 20, 4 20, 4 10"></Polygon>
+            </Button>
+            <Canvas Width="35" Height="25">
+                <Ellipse Fill="{StaticResource RedBrush}" Width="20" Height="20" Canvas.Top="5"></Ellipse>
+                <Ellipse Fill="{StaticResource OrangeBrush}" Width="20" Height="20" Canvas.Top="5" Canvas.Left="6"></Ellipse>
+                <Ellipse Fill="{StaticResource YellowBrush}" Width="20" Height="20" Canvas.Top="5" Canvas.Left="12"></Ellipse>
+            </Canvas>
+            <TextBlock Text="Media View" VerticalAlignment="Center" Style="{StaticResource Title}"></TextBlock>
+        </StackPanel>
+        <ContentControl x:Name="CurrentView"></ContentControl>
+    </DockPanel>
+</Window>

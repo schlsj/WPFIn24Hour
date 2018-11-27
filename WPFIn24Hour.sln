@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreviewEvents", "PreviewEve
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager", "ContactManager\ContactManager.csproj", "{FCEEBD3C-9CF2-403A-B137-D162505B9B29}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaViewer", "MediaViewer\MediaViewer.csproj", "{ACE65FEB-06A1-46FC-9842-F5C53023B189}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningShapes", "LearningShapes\LearningShapes.csproj", "{A4E05A96-1264-411C-B72C-1E5568A33818}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{FCEEBD3C-9CF2-403A-B137-D162505B9B29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCEEBD3C-9CF2-403A-B137-D162505B9B29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCEEBD3C-9CF2-403A-B137-D162505B9B29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACE65FEB-06A1-46FC-9842-F5C53023B189}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACE65FEB-06A1-46FC-9842-F5C53023B189}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACE65FEB-06A1-46FC-9842-F5C53023B189}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACE65FEB-06A1-46FC-9842-F5C53023B189}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4E05A96-1264-411C-B72C-1E5568A33818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4E05A96-1264-411C-B72C-1E5568A33818}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4E05A96-1264-411C-B72C-1E5568A33818}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4E05A96-1264-411C-B72C-1E5568A33818}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
