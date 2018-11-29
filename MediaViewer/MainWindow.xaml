@@ -1,7 +1,7 @@
 ﻿<Window x:Class="MediaViewer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Media Viewer" Height="600" Width="800" Loaded="MainWindow_Loaded">
+        Title="Media Viewer" Height="600" Width="800" Loaded="MainWindow_Loaded" Background="{StaticResource BgBrush}">
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0 0 0 8">
             <Button Background="{StaticResource RedBrush}" Click="Header_Clicked">
