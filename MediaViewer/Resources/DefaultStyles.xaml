@@ -7,5 +7,68 @@
         <Setter Property="FontSize" Value="20"></Setter>
         <Setter Property="FontWeight" Value="Bold"></Setter>
         <Setter Property="Foreground" Value="{StaticResource TextBrush}"></Setter>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <BlurEffect Radius="3"></BlurEffect>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="FancyButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Margin" Value="4"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Ellipse x:Name="ChromeEdge" Margin="-2" Width="36" Height="36" Fill="{StaticResource ChromeBrush}"
+                                 Stroke="{StaticResource ChromeOutline}" StrokeThickness="0.5"></Ellipse>
+                        <Ellipse x:Name="Bg" Width="32" Height="32" Fill="{StaticResource RedRadial}" Stroke="{StaticResource RedBrush}"></Ellipse>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"></ContentPresenter>
+                        <Rectangle x:Name="Gloss" Margin="3.5" Width="25" Height="16" RadiusX="20" RadiusY="10"
+                                   Fill="{StaticResource GlossBrush}" VerticalAlignment="Top"></Rectangle>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="MediaButtonStyle" TargetType="{x:Type ButtonBase}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ButtonBase}">
+                    <Grid Width="32" Height="32" Background="Transparent">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"></ContentPresenter>
+                        <Border x:Name="HighLight" CornerRadius="3" Background="{StaticResource MediaButtonHover}"
+                                BorderBrush="{StaticResource GlossOutline}" BorderThickness="1"></Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type Slider}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Slider}">
+                    <Grid x:Name="Root">
+                        <Border Height="4" CornerRadius="2" Background="{StaticResource SliderBg}"></Border>
+                        <Track x:Name="PART_Track">
+                            <Track.Thumb>
+                                <Thumb></Thumb>
+                            </Track.Thumb>
+                        </Track>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type Thumb}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Grid Width="16" Height="16">
+                        <Ellipse Fill="{StaticResource RedRadial}" Stroke="{StaticResource ControlOutline}"></Ellipse>
+                        <Ellipse Fill="{StaticResource GlossBrush}" Margin="2,2,4,4"></Ellipse>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>

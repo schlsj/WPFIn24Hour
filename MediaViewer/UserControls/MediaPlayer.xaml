@@ -14,14 +14,14 @@
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button Click="Stop_Clicked">
+                <Button Click="Stop_Clicked" Style="{StaticResource MediaButtonStyle}">
                     <Border Width="18" Height="20" Background="{StaticResource RedRadial}" CornerRadius="1"
-                            BorderBrush="{StaticResource ControlOutline}" BorderThickness="1">
+                            BorderBrush="{StaticResource ControlOutline}" BorderThickness="1" SnapsToDevicePixels="False">
                         <Rectangle HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 1 0 0" Width="15" Height="10"
                                    Fill="{StaticResource GlossBrush}" RadiusX="1" RadiusY="1"></Rectangle>
                    </Border>
                 </Button>
-                <Button Grid.Column="1" Click="Play_Clicked">
+                <Button Style="{StaticResource FancyButtonStyle}" Grid.Column="1" Click="Play_Clicked">
                     <Grid Margin="4 0 0 0">
                         <Polygon Fill="{StaticResource YellowGradient}" Stroke="{StaticResource ChromeOutline}" Points="0 0, 18 10, 0 18"></Polygon>
                         <Canvas Visibility="Hidden">
@@ -31,7 +31,7 @@
                         </Canvas>
                     </Grid>
                 </Button>
-                <ToggleButton Grid.Column="2" IsChecked="{Binding ElementName=MediaElement, Path=IsMuted}">
+                <ToggleButton Grid.Column="2" IsChecked="{Binding ElementName=MediaElement, Path=IsMuted}" Style="{StaticResource MediaButtonStyle}">
                     <Canvas Width="20" Height="20">
                         <Path Fill="{StaticResource RedRadial}" Stroke="{StaticResource ControlOutline}" StrokeLineJoin="Round">
                             <Path.Data>
@@ -76,7 +76,14 @@
             </MediaElement>
             <Rectangle x:Name="Reflection" Grid.Row="1" Width="{Binding ElementName=MediaElement,Path=ActualWidth}" MinHeight="24">
                 <Rectangle.Fill>
-                    <VisualBrush Visual="{Binding ElementName=MediaElement}"></VisualBrush>
+                    <VisualBrush Visual="{Binding ElementName=MediaElement}">
+                        <VisualBrush.Transform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="-1"></ScaleTransform>
+                                <TranslateTransform Y="{Binding ElementName=Reflection,Path=ActualHeight}"></TranslateTransform>
+                            </TransformGroup>
+                        </VisualBrush.Transform>
+                    </VisualBrush>
                 </Rectangle.Fill>
                 <Rectangle.OpacityMask>
                     <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,0.5">

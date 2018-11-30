@@ -26,6 +26,9 @@
         <GradientStop Color="#66ffffff" Offset="1"></GradientStop>
     </LinearGradientBrush>
     <RadialGradientBrush x:Key="RedRadial" GradientOrigin="0.45,0.3">
+        <RadialGradientBrush.RelativeTransform>
+            <TranslateTransform X="-0.2" Y="-0.2"></TranslateTransform>
+        </RadialGradientBrush.RelativeTransform>
         <GradientStop Color="{StaticResource OrangeColor}" Offset="0"></GradientStop>
         <GradientStop Color="{StaticResource RedColor}" Offset="1"></GradientStop>
     </RadialGradientBrush>
@@ -64,4 +67,15 @@
             </DrawingGroup>
         </DrawingBrush.Drawing>
     </DrawingBrush>
+    <LinearGradientBrush x:Key="MediaButtonHover" StartPoint="0.5,0" EndPoint="0.5,1">
+        <GradientStop Color="#c0ffffff" Offset="0"></GradientStop>
+        <GradientStop Color="#00ffffff" Offset="0.33"></GradientStop>
+        <GradientStop Color="#00ffffff" Offset="0.66"></GradientStop>
+        <GradientStop Color="#c0ffffff" Offset="1"></GradientStop>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="SliderBg" StartPoint="0.5,0" EndPoint="0.5,1">
+        <GradientStop Color="{StaticResource RedColor}" Offset="0"></GradientStop>
+        <GradientStop Color="{StaticResource OrangeColor}" Offset="0.5"></GradientStop>
+        <GradientStop Color="{StaticResource RedColor}" Offset="1"></GradientStop>
+    </LinearGradientBrush>
 </ResourceDictionary>
