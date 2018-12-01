@@ -1,0 +1,24 @@
+﻿<Window x:Class="LearningAnimation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Learning Animation" Height="300" Width="300">
+    <Window.Resources>
+        <PathGeometry x:Key="Path" Figures="M0,0 L100,0 100,100 200,100"></PathGeometry>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard TargetName="Ball">
+                    <DoubleAnimationUsingPath Duration="0:0:10" Storyboard.TargetProperty="(Canvas.Left)" Source="X" 
+                                              PathGeometry="{StaticResource Path}"></DoubleAnimationUsingPath>
+                    <!--<DoubleAnimationUsingPath Duration="0:0:10" Storyboard.TargetProperty="(Canvas.Top)" Source="Y" 
+                                              PathGeometry="{StaticResource Path}"></DoubleAnimationUsingPath>-->
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+    <Canvas>
+        <Ellipse x:Name="Ball" Width="20" Height="20" Fill="Red" Canvas.Top="50" Canvas.Left="0"></Ellipse>
+        <Path Stroke="Red" StrokeThickness="2" Data="{StaticResource Path}"></Path>
+    </Canvas>
+</Window>

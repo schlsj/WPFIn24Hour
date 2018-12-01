@@ -17,15 +17,44 @@
         <Setter Property="Margin" Value="4"></Setter>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
+                <ControlTemplate TargetType="{x:Type ButtonBase}">
                     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Ellipse x:Name="ChromeEdge" Margin="-2" Width="36" Height="36" Fill="{StaticResource ChromeBrush}"
-                                 Stroke="{StaticResource ChromeOutline}" StrokeThickness="0.5"></Ellipse>
+                                 Stroke="{StaticResource ChromeOutline}" StrokeThickness="0.5" RenderTransformOrigin="0.5,0.5">
+                            <Ellipse.RenderTransform>
+                                <RotateTransform></RotateTransform>
+                            </Ellipse.RenderTransform>
+                        </Ellipse>
                         <Ellipse x:Name="Bg" Width="32" Height="32" Fill="{StaticResource RedRadial}" Stroke="{StaticResource RedBrush}"></Ellipse>
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"></ContentPresenter>
                         <Rectangle x:Name="Gloss" Margin="3.5" Width="25" Height="16" RadiusX="20" RadiusY="10"
                                    Fill="{StaticResource GlossBrush}" VerticalAlignment="Top"></Rectangle>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard TargetName="ChromeEdge" TargetProperty="RenderTransform.Angle">
+                                    <DoubleAnimation To="90" Duration="0:0:0.10"></DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard TargetName="ChromeEdge" TargetProperty="RenderTransform.Angle">
+                                    <DoubleAnimation To="0" Duration="0:0:0.10"></DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="RenderTransform" TargetName="ChromeEdge">
+                                <Setter.Value>
+                                    <TransformGroup>
+                                        <RotateTransform Angle="90"></RotateTransform>
+                                    </TransformGroup>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -37,8 +66,16 @@
                     <Grid Width="32" Height="32" Background="Transparent">
                         <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"></ContentPresenter>
                         <Border x:Name="HighLight" CornerRadius="3" Background="{StaticResource MediaButtonHover}"
-                                BorderBrush="{StaticResource GlossOutline}" BorderThickness="1"></Border>
+                                BorderBrush="{StaticResource GlossOutline}" BorderThickness="1" Visibility="Hidden"></Border>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="HighLight" Property="Visibility" Value="Visible"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="HighLight" Property="Opacity" Value="0.5"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

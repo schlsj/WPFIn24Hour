@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
@@ -25,6 +26,7 @@ namespace MediaViewer.UserControls
         public MediaPlayer()
         {
             InitializeComponent();
+            ColorAnimation test = null;
         }
 
         private void MediaElement_OnMediaOpened(object sender, RoutedEventArgs e)
@@ -34,7 +36,17 @@ namespace MediaViewer.UserControls
 
         private void Play_Clicked(object sender, RoutedEventArgs e)
         {
+            
             MediaClock clock = MediaElement.Clock;
+            if (Play.Visibility == Visibility.Hidden)
+            {
+                Play.Visibility = Visibility.Visible;
+                Pause.Visibility = Visibility.Hidden;
+            }else if (Play.Visibility == Visibility.Visible)
+            {
+                Play.Visibility = Visibility.Hidden;
+                Pause.Visibility = Visibility.Visible;
+            }
             if (clock != null)
             {
                 if (clock.IsPaused)

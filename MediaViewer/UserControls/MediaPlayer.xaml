@@ -1,6 +1,30 @@
 ﻿<UserControl x:Class="MediaViewer.UserControls.MediaPlayer"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <UserControl.Resources>
+        <Storyboard x:Key="TipStoryboard" TargetName="TipBox">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Canvas.Left)">
+                <DiscreteDoubleKeyFrame KeyTime="00:00:00" Value="115"></DiscreteDoubleKeyFrame>
+                <DiscreteDoubleKeyFrame KeyTime="00:00:02" Value="150"></DiscreteDoubleKeyFrame>
+                <DiscreteDoubleKeyFrame KeyTime="00:00:04" Value="185"></DiscreteDoubleKeyFrame>
+                <DiscreteDoubleKeyFrame KeyTime="00:00:06" Value="280"></DiscreteDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <StringAnimationUsingKeyFrames Storyboard.TargetProperty="Tag">
+                <DiscreteStringKeyFrame KeyTime="00:00:00" Value="Stops media when playing."></DiscreteStringKeyFrame>
+                <DiscreteStringKeyFrame KeyTime="00:00:02" Value="Plays media, or pauses currently playing media."></DiscreteStringKeyFrame>
+                <DiscreteStringKeyFrame KeyTime="00:00:04" Value="Toggles mute."></DiscreteStringKeyFrame>
+                <DiscreteStringKeyFrame KeyTime="00:00:06" Value="Controls the volume."></DiscreteStringKeyFrame>
+            </StringAnimationUsingKeyFrames>
+            <ParallelTimeline Storyboard.TargetProperty="Opacity">
+                <DoubleAnimation BeginTime="00:00:00" To="1"></DoubleAnimation>
+                <DoubleAnimation BeginTime="00:00:08" To="0"></DoubleAnimation>
+            </ParallelTimeline>
+            <ParallelTimeline Storyboard.TargetName="ProgressSlide" Storyboard.TargetProperty="Opacity">
+                <DoubleAnimation BeginTime="00:00:00" To="0"></DoubleAnimation>
+                <DoubleAnimation BeginTime="00:00:08" To="1"></DoubleAnimation>
+            </ParallelTimeline>
+        </Storyboard>
+    </UserControl.Resources>
     <DockPanel>
         <Grid DockPanel.Dock="Bottom" HorizontalAlignment="Center" Width="400" Height="50" Background="{StaticResource MediaControlPanelBackground}">
             <Grid.ColumnDefinitions>
@@ -8,6 +32,23 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
+            <Canvas VerticalAlignment="Top" Margin="0 6 0 0">
+                <StackPanel x:Name="TipBox" Canvas.Bottom="0" Opacity="0">
+                    <Border CornerRadius="4" SnapsToDevicePixels="True" Width="100" Padding="4" Background="{StaticResource PaleBrush}"
+                            BorderBrush="{StaticResource OrangeBrush}" BorderThickness="1">
+                        <TextBlock TextWrapping="Wrap" TextAlignment="Center" Text="{Binding ElementName=TipBox,Path=Tag}"></TextBlock>
+                    </Border>
+                    <Path Margin="0 -1 0 0" SnapsToDevicePixels="True" Stroke="{StaticResource OrangeBrush}" 
+                          Fill="{StaticResource PaleBrush}" Data="M40,0 L50,10 60,0"></Path>
+                </StackPanel>
+            </Canvas>
+            <Button Style="{StaticResource MediaButtonStyle}" Content="Help">
+                <Button.Triggers>
+                    <EventTrigger RoutedEvent="Button.Click">
+                        <BeginStoryboard Storyboard="{StaticResource TipStoryboard}"></BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
             <Grid Grid.Column="1" HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -23,8 +64,9 @@
                 </Button>
                 <Button Style="{StaticResource FancyButtonStyle}" Grid.Column="1" Click="Play_Clicked">
                     <Grid Margin="4 0 0 0">
-                        <Polygon Fill="{StaticResource YellowGradient}" Stroke="{StaticResource ChromeOutline}" Points="0 0, 18 10, 0 18"></Polygon>
-                        <Canvas Visibility="Hidden">
+                        <Polygon x:Name="Play" Fill="{StaticResource YellowGradient}" Stroke="{StaticResource ChromeOutline}" Points="0 0, 18 10, 0 18">
+                        </Polygon>
+                        <Canvas x:Name="Pause" Visibility="Hidden">
                             <Rectangle Height="18" Width="6" Fill="{StaticResource YellowGradient}" Stroke="{StaticResource ChromeOutline}"></Rectangle>
                             <Rectangle Height="18" Width="6" Fill="{StaticResource YellowGradient}" Stroke="{StaticResource ChromeOutline}"
                                        Canvas.Left="8"></Rectangle>
@@ -32,33 +74,50 @@
                     </Grid>
                 </Button>
                 <ToggleButton Grid.Column="2" IsChecked="{Binding ElementName=MediaElement, Path=IsMuted}" Style="{StaticResource MediaButtonStyle}">
-                    <Canvas Width="20" Height="20">
-                        <Path Fill="{StaticResource RedRadial}" Stroke="{StaticResource ControlOutline}" StrokeLineJoin="Round">
-                            <Path.Data>
-                                <PathGeometry>
-                                    <PathFigure StartPoint="12,5" IsClosed="True">
-                                        <LineSegment Point="0,6"></LineSegment>
-                                        <PolyLineSegment Points="0 14, 12 15, 17 20"></PolyLineSegment>
-                                        <ArcSegment Point="17,0" Size="30,30"></ArcSegment>
-                                    </PathFigure>
-                                </PathGeometry>
-                            </Path.Data>
-                        </Path>
-                        <Path Fill="{StaticResource GlossBrush}">
-                            <Path.Data>
-                                <PathGeometry>
-                                    <PathFigure StartPoint="13,6" IsClosed="True">
-                                        <PolyLineSegment Points="1 7, 1 11, 17.5 11"></PolyLineSegment>
-                                        <ArcSegment Point="16.5,2" Size="30,30"></ArcSegment>
-                                    </PathFigure>
-                                </PathGeometry>
-                            </Path.Data>
-                        </Path>
-                        <Polygon Points="20 5, 25 0, 27 3" Fill="{StaticResource TextBrush}"></Polygon>
-                        <Polygon Points="20 10, 28 9, 27 6" Fill="{StaticResource TextBrush}"></Polygon>
-                        <Polygon Points="20 13, 26 17, 27 13" Fill="{StaticResource TextBrush}"></Polygon>
-                        <Polygon Points="20 17, 24 21, 26 18" Fill="{StaticResource TextBrush}"></Polygon>
-                    </Canvas>
+                    <Grid>
+                        <Canvas Width="20" Height="20">
+                            <Path Fill="{StaticResource RedRadial}" Stroke="{StaticResource ControlOutline}" StrokeLineJoin="Round">
+                                <Path.Data>
+                                    <PathGeometry>
+                                        <PathFigure StartPoint="12,5" IsClosed="True">
+                                            <LineSegment Point="0,6"></LineSegment>
+                                            <PolyLineSegment Points="0 14, 12 15, 17 20"></PolyLineSegment>
+                                            <ArcSegment Point="17,0" Size="30,30"></ArcSegment>
+                                        </PathFigure>
+                                    </PathGeometry>
+                                </Path.Data>
+                            </Path>
+                            <Path Fill="{StaticResource GlossBrush}">
+                                <Path.Data>
+                                    <PathGeometry>
+                                        <PathFigure StartPoint="13,6" IsClosed="True">
+                                            <PolyLineSegment Points="1 7, 1 11, 17.5 11"></PolyLineSegment>
+                                            <ArcSegment Point="16.5,2" Size="30,30"></ArcSegment>
+                                        </PathFigure>
+                                    </PathGeometry>
+                                </Path.Data>
+                            </Path>
+                            <Polygon Points="20 5, 25 0, 27 3" Fill="{StaticResource TextBrush}"></Polygon>
+                            <Polygon Points="20 10, 28 9, 27 6" Fill="{StaticResource TextBrush}"></Polygon>
+                            <Polygon Points="20 13, 26 17, 27 13" Fill="{StaticResource TextBrush}"></Polygon>
+                            <Polygon Points="20 17, 24 21, 26 18" Fill="{StaticResource TextBrush}"></Polygon>
+                        </Canvas>
+                        <Canvas>
+                            <Canvas.Style>
+                                <Style TargetType="{x:Type Canvas}">
+                                    <Setter Property="Visibility" Value="Hidden"></Setter>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=MediaElement,Path=IsMuted}" Value="True">
+                                            <Setter Property="Visibility" Value="Visible"></Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Canvas.Style>
+                            <Ellipse Width="20" Height="20" Stroke="{DynamicResource BgBrush}" Canvas.Left="0" Canvas.Top="0" StrokeThickness="3"></Ellipse>
+                            <Line Width="13.498" Height="16.466" X1="4.94" Y1="16.26" X2="15.44" Y2="2.82" Fill="{x:Null}" Stretch="Fill"
+                                  Stroke="{StaticResource BgBrush}" StrokeThickness="3" Canvas.Left="3.442" Canvas.Top="1.319"></Line>
+                        </Canvas>
+                    </Grid>
                 </ToggleButton>
             </Grid>
             <Slider Grid.Column="2" Minimum="0" Maximum="1" Value="{Binding ElementName=MediaElement,Path=Volume}"

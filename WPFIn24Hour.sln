@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaViewer", "MediaViewer\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningShapes", "LearningShapes\LearningShapes.csproj", "{A4E05A96-1264-411C-B72C-1E5568A33818}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningAnimation", "LearningAnimation\LearningAnimation.csproj", "{594B109F-96DF-41AD-BA85-D9583CAFB399}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{A4E05A96-1264-411C-B72C-1E5568A33818}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4E05A96-1264-411C-B72C-1E5568A33818}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4E05A96-1264-411C-B72C-1E5568A33818}.Release|Any CPU.Build.0 = Release|Any CPU
+		{594B109F-96DF-41AD-BA85-D9583CAFB399}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{594B109F-96DF-41AD-BA85-D9583CAFB399}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{594B109F-96DF-41AD-BA85-D9583CAFB399}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{594B109F-96DF-41AD-BA85-D9583CAFB399}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
